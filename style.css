@@ -28,7 +28,12 @@
 	border-style: solid;
 }
 
-.textbox
+.info
 {
 	border-style: dashed;
+}
+
+.button
+{
+	border-style: dotted;
 }
