@@ -1,0 +1,29 @@
+.header
+{
+	border-style: double;
+}
+
+#ann
+{
+	border-style: groove;
+}
+
+#calendar
+{
+	border-style: groove;
+}
+
+.login
+{
+	border-style: groove;
+}
+
+#abox
+{
+	border-style: groove;
+}
+
+.navig
+{
+	border-style: solid;
+}
