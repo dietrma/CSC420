@@ -14,7 +14,7 @@
 
         function authenticate($username, $password)
         {
-                if($username == 'null' && $password == 'null')
+                if($username == 'test' && $password == 'test')
                 {
                         return true;
                 }

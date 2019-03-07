@@ -36,6 +36,6 @@
 		</div>
 		
 		<div class = "navig">
-			<p><a href = "welcome.html">Home</a> || <a href = "abtCRJ.html">About CRJ Club</a> || <a href = "abtAPS.html">About APS</a> || Announcements || <a href = "contact.html">Contacts</a></p>
+			<p><a href = "index.php">Home</a> || <a href = "abtCRJ.html">About CRJ Club</a> || <a href = "abtAPS.html">About APS</a> || Announcements || <a href = "contact.html">Contacts</a></p>
 		</div>
 		
