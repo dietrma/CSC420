@@ -6,19 +6,47 @@
 	</head>
 	<body>
 		<div class = "login">
-			<form action = "register.php" method = "post">
+			<form id = "register" action = "register.php" method = "post">
 			<!-- sends whatever information is inputted below to the register.php page -->
-				<p>Input Name:</p>
-				<input type = "text" name = "name">
-				<br />
-				
-				<p>Inpute Email Address:</p>
-				<input type = "text" name = "email">
-				<br />
-				
-				<p>Input Password:</p>
-				<input type = "password" name = "password">
-				<br />
+				<fieldset >
+					<legend>Registration</legend>
+					
+						<input type = "hidden" name = "submitted" id = "submitted" value = "1" />
+						<br />
+						<label for = "fName">Your First Name*: </label>
+						<input type = "text" name = "fName" id = "fName" maxlength = "30" />
+						<br />
+						<label for = "lName">Your Last Name*: </label>
+						<input type = "text" name = "lName" id = "lName" maxlength = "30" />
+						<br />
+						<label for = "email">Email Address*: </label>
+						<input type = "text" name = "email" id = "email" maxlength = "50" />
+						<br />
+						<label for = "username">Username*: </label>
+						<input type = "text" name = "username" id = "username" maxlength = "15" />
+						<br />
+						<label for = "password">Password*: </label>
+						<input type = "password" name = "password" id = "password" maxlength = "50" />
+						<br />
+						<input type = "submit" name = "submit" value = "submit" />
+				</fieldset>
 			</form>
+						
+						<!-- 
+						<p>Input Name:</p>
+						<input type = "text" name = "name">
+						<br />
+					
+						<p>Input Email Address:</p>
+						<input type = "text" name = "email">
+						<br />
+						
+						<p>Input Password:</p>
+						<input type = "password" name = "password">
+						<br />
+					
+						<input type = "submit">
+						
+						-->
 		</div>
 	</body>

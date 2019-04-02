@@ -1,6 +1,6 @@
 <?php
         session_start();
-        include('userAuthenticator.php');
+        /* include('userAuthenticator.php');
         if (isset($_POST['Submit']))
         {
                 $username = $_POST['username'];
@@ -17,29 +17,78 @@
                 {
                         redirectToLogin();
                 }
-        }
+        } */
+		
+	$errmsg_arr = array();
+	$errflag = false;
+	
+/*
+	$servername = "localhost";
+	$username = "root";
+	$password = " ";
 
+	// Create connection
+	$conn = new mysqli($servername, $username, $password);
 
+	// Check connection
+	if ($conn->connect_error) 
+	{
+		die("Connection failed: " . $conn->connect_error);
+	} 
+	echo "Connected successfully";
+*/
+	
+	$uname = $_POST['uname'];
+	$pswd = $_POST['pswd'];
+	$host="localhost";
+	$user="root";
+	$pass=" ";
+
+	try
+	{
+		$pdo = new PDO("mysql:host=localhost;dbname=crjclub", "root", "");
+		
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	
+	catch(PDOException $e)
+	{
+		die("ERROR: Could not connect. " . $e->getMessage());
+	}
+	
+	if($uname == '')
+	{
+		$errmsg_arr[] = 'You must enter your username.';
+		$errflag = true;
+	}
+	
+	if($pswd == '')
+	{
+		$errmsg_arr[] = 'You must enter your password.';
+		$errflag = true;
+	}
+	
+	$result = $conn->prepare("SELECT * FROM users WHERE userName=:uname AND password=:pswd");
+	$result->bindParam(':uname', $uname);
+	$result->bindParam(':pswd', $pswd);
+	$result->execute();
+	$rows = $result->fetch(PDO::FETCH_NUM);
+	if($rows > 0)
+	{
+		header("location: announce.php");
+	}
+	
+	else
+	{
+		$errmsg_arr[] = "Incorrect or nonexistent username and/or password.";
+		$errflag = true;
+	}
+	
+	if($errflag)
+	{
+		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+		session_write_close();
+		header("location: index.php");
+		exit();
+	}
 ?>
-
-<!DOCTYPE html>
-<html lang = "en">
-	<head>
-		<title>Login Page</title>
-		<link rel = "stylesheet" type = "text/css" href = "style.css">
-	</head>
-	<body>
-		<p>Log In Here</p>
-		<form name = "login" id = "login" method "post">
-			<fieldset>
-				<label for = 'username' >Username:</label>
-				<input type = 'text' name = 'username' id = 'username' maxLength = '50' />
-				
-				<label for = 'password' >Password:</label>
-				<input type = 'password' name = 'password' id = 'password' maxLength = '50' />
-				
-				<input type = 'submit' name = 'Submit' />
-			</fieldset>
-		</form>
-	</body>
-</html>

@@ -1,0 +1,45 @@
+<!-- Madeline Dietrich
+     CSC420 Database Principles
+     Events Submission Form -->
+	 
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<title> Event Submission </title>
+		<link rel = "stylesheet" type = "text/css" href = "style.css">
+	</head>
+	<body>
+		<!-- Page Header -->
+		<div class = "header">
+			<p>Event Submission Form</p>
+		</div>
+
+		<form id = "submit" action = "submitEvent.php" method = "post">
+			<fieldset >
+				<legend>Registration</legend>
+							
+					<input type = "hidden" name = "submitted" id = "submitted" value = "1" />
+					<br />
+					<label for = "eName">Event Name*: </label>
+					<input type = "text" name = "eName" id = "eName" />
+					<br />
+					<label for = "date">Event Date*: </label>
+					<input type = "date" name = "date" id = "date"/>
+					<br />
+					<label for = "time">What Time?*: </label>
+					<input type = "time" name = "time" id = "time"/>
+					<br />
+					<label for = "location">Location*: </label>
+					<input type = "text" name = "location" id = "location" maxlength = "150" />
+					<br />
+					<label for = "contact">Who to Contact for Info?*: </label>
+					<input type = "text" name = "contact" id = "contact" maxlength = "150" />
+					<br />
+					<label for = "info">Event Information*: </label>
+					<input type = "text" name = "info" id = "info"/>
+					<br />
+					<input type = "submit" name = "submit" value = "submit" />
+			</fieldset>
+		</form>
+	</body>
+</html>
