@@ -1,50 +1,41 @@
 <?php
-	$name=$_POST['name'];
-	$email=$POST['email'];
+	$fname=$_POST['fName'];
+	$lname=$_POST['lName'];
+	$email=$_POST['email'];
+	$uname=$_POST['username'];
 	$password=$_POST['password'];
 	
-	$host=; //if the damn server worked then I'd include it
+	$host="localhost";
 	$user="root";
-	$password=;//get the server working
+	$pass=" ";
 	
-	$connect=mysql_connect($host,$user,$pass);
-	
-	$db=;//don't have one yet
-	
-	if($connect)
+	try
 	{
-		$select=mysql_select_db($db);
+		$pdo = new PDO("mysql:host=localhost;dbname=crjclub", "root", "");
 		
-		if(!$select)
-		{
-			echo "There was an issue selecting the database!";
-		}
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	
-	else
+	catch(PDOException $e)
 	{
-		echo "Sorry, we can't connect to the database right now.";
+		die("ERROR: Could not connect. " . $e->getMessage());
 	}
 	
-	if(strlen($password) >= 8)
+	try
 	{
-		$q=mysql_query("INSERT INTO `database_name` (`name`,`email`,`password`) VALUES ('".$name."','".$email."','".$password."')");
+		$sql = "INSERT INTO users (firstName, lastName, email, userName, password) VALUES ('$fname', '$lname', '$email', '$uname', '$password')";
 		
-		if($q)
-		{
-			echo "Congrats! Your account has been created.";
-		}
+		$pdo->exec($sql);
 		
-		else
-		{
-			echo "Ohp, something went wrong!";
-		}	
+		echo "Registration Complete";
+		echo '<p><a href = "index.php">Return to Welcome Page</a></p>';
 	}
 	
-	else
+	catch(PDOException $e)
 	{
-		echo "Your password need to be a minimum of 8 characters in length.";
+		die("ERROR: Could not execute $sql. " . $e->getMessage());
 	}
+	
 	
 ?>
 

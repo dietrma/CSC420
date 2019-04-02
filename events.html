@@ -26,12 +26,17 @@
 		<!-- Login area -->
 		<div class = "login">
 			<p>Login</p>
-			<!-- textboxes for username and password -->
-			<div class = "button">
-				<p>login</p>
-			</div>
+			<form action = "login.php" method = "POST">
+				Enter Username Here:<br />
+				<input type = "text" name = "uname" /><br />
+		
+				Enter Password Here:<br />
+				<input type = "password" name = "pswd" /><br />
+				<input type = "submit" value = "login" />
+			</form>
 		</div>	
 		
+		<a href = "eventSub.html">Click here to submit an event</a>
 		<div class = "navig">
 		<p><a href = "index.php">Home</a> || <a href = "abtCRJ.html">About CRJ Club</a> || <a href = "abtAPS.html">About APS</a>|| <a href = "announce.html">Announcements</a> || <a href = "contact.html">Contacts</a></p>
 	</div>
