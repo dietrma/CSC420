@@ -43,7 +43,12 @@
 	$host="localhost";
 	$user="root";
 	$pass=" ";
+	
+	echo "$uname";
 
+	$num = 4;
+	
+	echo "etrtrefh";
 	try
 	{
 		$pdo = new PDO("mysql:host=localhost;dbname=crjclub", "root", "");
@@ -56,23 +61,29 @@
 		die("ERROR: Could not connect. " . $e->getMessage());
 	}
 	
-	if($uname == '')
+	if($uname == null)
 	{
 		$errmsg_arr[] = 'You must enter your username.';
 		$errflag = true;
+		
 	}
 	
-	if($pswd == '')
+	if($pswd == null)
 	{
 		$errmsg_arr[] = 'You must enter your password.';
 		$errflag = true;
 	}
 	
-	$result = $conn->prepare("SELECT * FROM users WHERE userName=:uname AND password=:pswd");
+	if(isset($_POST['uname']) && isset($_POST['pswd'])){
+		$sql = "SELECT email FROM users WHERE userName=:uname AND password=:pswd";
+	$result = $pdo->prepare($sql);
+	
 	$result->bindParam(':uname', $uname);
 	$result->bindParam(':pswd', $pswd);
 	$result->execute();
-	$rows = $result->fetch(PDO::FETCH_NUM);
+	$rows = $result->fetch(PDO::FETCH_ASSOC);
+	}
+	
 	if($rows > 0)
 	{
 		header("location: announce.php");
