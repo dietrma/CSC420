@@ -30,13 +30,10 @@
 
 	try 
 	{
-		$conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-		// set the PDO error mode to exception
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "INSERT INTO events (name, date, time, location, contact, info)
 		VALUES ('$ename', '$date', '$time', '$location', '$contact', '$info')";
 		// use exec() because no results are returned
-		$conn->exec($sql);
+		$pdo->exec($sql);
 		echo "Event submitted successfully";
 	}
 	catch(PDOException $e)

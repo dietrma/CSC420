@@ -3,6 +3,10 @@
      Welcome Page -->
 	 
 <?php
+
+include ("dummy.php");
+
+$login = new Login();
 	session_start();
 	
 	if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) > 0 )
@@ -51,6 +55,9 @@
 			<input type = "password" name = "pswd" /><br />
 			<input type = "submit" value = "login" />
 		</form>
+		<?php
+			$login->login();
+			?>
 	</div>
 	<div id = "register">
 		<a href = "register.html">Register Here!</a>
